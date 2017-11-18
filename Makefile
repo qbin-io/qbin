@@ -24,6 +24,7 @@ back-watch:
 	} ;\
 	inotifywait -qq --exclude '/\..+' -re modify . ;\
 	[ -n $$program ] && kill $$program >/dev/null 2>&1 ;\
+	sleep 0.5 ;\
 	done
 
 front:
