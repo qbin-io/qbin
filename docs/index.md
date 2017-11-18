@@ -48,4 +48,6 @@ Probably, `make all-watch` will be your best friend.
 
 ## Further Documentation
 
-- [Database structure](database)
+- [Database Structure](database)
+- [Frontend Variables](frontend-variables)
+- [Planned Features](planned-features)
