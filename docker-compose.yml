@@ -1,0 +1,18 @@
+version: "3"
+services:
+    application:
+        build: .
+        networks: [main]
+        environment:
+            DATABASE: root:qbin-K4Y76GQBB1DqTs6VH3aV@database/qbin
+    database:
+        image: mariadb
+        networks: [main]
+        volumes: ["./storage:/var/lib/mysql"]
+        environment:
+            # Make sure you generate a new password:
+            # sed -i 's|K4Y76GQBB1DqTs6VH3aV|'$(cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 20)'|g' docker-compose.yml
+            MYSQL_ROOT_PASSWORD: qbin-K4Y76GQBB1DqTs6VH3aV
+networks:
+    main:
+        driver: bridge

@@ -1,0 +1,6 @@
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/qbin-io/frontend.git
+[submodule "backend"]
+	path = backend
+	url = https://github.com/qbin-io/backend.git
