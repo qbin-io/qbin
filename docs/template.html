@@ -28,3 +28,7 @@
 </div>
 
 </main>
+
+<script>
+    [...document.querySelectorAll("table")].forEach(table => table.outerHTML = "<div class=\"table\">" + table.outerHTML + "</div>");
+</script>
