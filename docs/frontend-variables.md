@@ -5,13 +5,13 @@ The following variables exist in the various files:
 
 ## Global
 | Variable   | Description                                                                |
-|============|============================================================================|
+| ---------- | -------------------------------------------------------------------------- |
 | `$$root$$` | Public entry point without trailing slash, e.g. `https://example.org/qbin` |
 | `$$path$$` | Domain-relative public entry point without trailing slash, e.g. `/qbin`    |
 
 ## index.html
 | Variable                      | Description                                                              |
-|===============================|==========================================================================|
+| ----------------------------- | ------------------------------------------------------------------------ |
 | `$$if_fork$$...$$/if_fork$$`  | Only include a specific section on `/<document>/fork` pages              |
 | `$$!if_fork$$...$$/if_fork$$` | Only include a specific section on the index page, and not on fork pages |
 | `$$id$$`                      | See output.html; only exists when forking                                |
@@ -23,7 +23,7 @@ The following variables exist in the various files:
 
 ## output.html
 | Variable                   | Description                                                                   |
-|============================|===============================================================================|
+| -------------------------- | ----------------------------------------------------------------------------- |
 | `$$id$$`                   | The ID of the document, like it is in the URL                                 |
 | `$$syntax$$`               | The syntax language of the document, e.g. `javascript`                        |
 | `$$creation$$`             | The creation date in the format `YYYY-MM-DD hh:mm (UTC)`                      |
@@ -32,6 +32,6 @@ The following variables exist in the various files:
 | `$$content$$`              | The document contents, dependent on the content type either wrapped in a `<div class="markdown">`, or in a `<pre class="no-linenumber-padding"><code class="language-... line-numbers">` |
 
 ## report.html
-| Variable                   | Description                                                                   |
-|============================|===============================================================================|
-| `$$id$$`                   | The ID of the document to report, like it is in the URL                       |
+| Variable                   | Description                                             |
+| -------------------------- | --------------------------------------------------------|
+| `$$id$$`                   | The ID of the document to report, like it is in the URL |
