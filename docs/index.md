@@ -3,6 +3,13 @@ A minimalist pastebin service. Includes a nice and easy Netcat and POST API, and
 
 ### » [See it in action](https://qbin.io/)
 
+## Documentation Index
+
+- [API Documentation](api)
+- [Database Structure](database)
+- [Frontend Variables](frontend-variables)
+- [Planned Features](planned-features)
+
 ## Features
 - Simple UI that works with all browsers (including lynx)  
   JavaScript is not required, but adds nice features like:
@@ -45,9 +52,3 @@ make clean         run go clean and remove contents of 'storage'
 make back && qbin  manually execute qbin
 ```
 Probably, `make all-watch` will be your best friend.
-
-## Further Documentation
-
-- [Database Structure](database)
-- [Frontend Variables](frontend-variables)
-- [Planned Features](planned-features)
