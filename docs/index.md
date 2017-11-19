@@ -28,19 +28,27 @@ A minimalist pastebin service. Includes a nice and easy Netcat and POST API, and
 ### Deploy using Go
 ```
 $ go get github.com/qbin-io/backend
+
 $ git clone https://github.com/qbin-io/frontend /usr/share/qbin
+
 $ qbin -p /usr/share/qbin
 ```
 
 ### Deploy using Docker
 ```
 $ git clone --recurse-submodules https://github.com/qbin-io/qbin qbin && cd qbin
+
 $ docker-compose up -d
 ```
 
 ### Setting up a development environment
 ```
 $ git clone --recurse-submodules https://github.com/qbin-io/qbin qbin && cd qbin
+
+$ echo /eff_large_wordlist.txt >> .git/info/exclude  # Don't try to commit changes to the wordlist
+
+$ curl -s https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt | sed -r 's/^[0-9]+\t//g' >> eff_large_wordlist.txt  # Initialize wordlist
+
 $ make
 make all           build frontend and backend
 make all-watch     build and run backend and frontend, and watch for changes
