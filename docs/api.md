@@ -5,23 +5,24 @@ The default syntax highlighting language is `general`, which highlights brackets
 
 # HTTP API
 You can use one of the following methods:
-- `POST /` with `Content-Type: application/x-www-form-urlencoded` or `Content-Type: multipart/form-data` using the following form parameters:
+- `POST /` with `application/x-www-form-urlencoded` or `multipart/form-data` using the following form parameters:
   - `Q`: The actual text
-  - `E`: The number of minutes until ***E***xpiration, or `0` for no expiration. You can also use one of the units `h d w` (for hours, days and weeks), e.g. `6h`.
-  - `S`: The ***S***yntax highlighting language (see *Supported Syntax Languages* below)
-  - `R`: If set to `1`, ***R***edirect to the document page instead of returning just the link to it
+  - `E`: The number of minutes until **[E]xpiration**, or `0` for no expiration.  
+    You can also use one of the units `h d w` (for hours, days and weeks), e.g. `6h`.
+  - `S`: The **[S]yntax highlighting language** (see *Supported Syntax Languages* below)
+  - `R`: If set to `1`, **[R]edirect** to the document page instead of returning just the link to it
 - `POST /` with any other `Content-Type` to upload the whole request body.
 - `PUT /` with any `Content-Type` to upload the whole request body. This is easier to use with `curl`.
 
-When not using a form request, you can still supply the parameters as an HTTP header:
+When not using a form request, you can still supply the parameters as an **HTTP header**:
 - `E: <minutes>` for expiration time
 - `S: <syntax>` for syntax highlighting language
 - `R: 1` for redirection
 
 ## Using curl
 ```
-$ echo "Hello World" | curl -sT- https://qbin.io [-HE:<expiration>] [-HS:<syntax>]
-$ curl -sT file.txt https://qbin.io [-HE:<expiration>] [-HS:<syntax>]
+$ echo "Hello World" | curl -sT- https://qbin.io -HE:6h -HS:javascript
+$ curl -sT file.txt https://qbin.io -HE:6h -HS:javascript
 ```
 
 ## Using PowerShell
@@ -32,7 +33,7 @@ Invoke-RestMethod -method PUT https://qbin.io -InFile file.txt
 
 ## Using JavaScript
 ```
-const qbin = (x => fetch("https://qbin.io", { method: "PUT", body: x }).then(y => y.text()).then(z => console.info(z) || z));
+const qbin = ((q,e,s) => fetch("https://qbin.io", { method: "PUT", body: q, headers: {e,s} }).then(y => y.text()).then(z => console.info(z) || z));
 
 qbin("Hello World"); // Just print to console
 qbin("Hello World").then(link => doSomething(link));
