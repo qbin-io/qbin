@@ -3,7 +3,7 @@ The default maximum file size is **1 MB**.
 The default expiration time is `20160`, corresponding to **14 days**.  
 The default syntax definition is `generic`, which highlights brackets, quotes, numbers and special characters in any text.
 
-# HTTP API
+## HTTP API
 You can use one of the following methods:
 - `POST /` with `application/x-www-form-urlencoded` or `multipart/form-data` using the following form parameters:
   - `Q`: The actual text
@@ -19,19 +19,19 @@ When not using a form request, you can still supply the parameters as an **HTTP 
 - `S: <syntax>` for syntax highlighting language
 - `R: 1` for redirection
 
-## Using curl
+### Using curl
 ```
 $ echo "Hello World" | curl -sT- https://qbin.io -HE:6h -HS:javascript
 $ curl -sT file.txt https://qbin.io -HE:6h -HS:javascript
 ```
 
-## Using PowerShell
+### Using PowerShell
 ```
 Invoke-RestMethod -method PUT https://qbin.io -body "Hello World"
 Invoke-RestMethod -method PUT https://qbin.io -InFile file.txt
 ```
 
-## Using JavaScript
+### Using JavaScript
 ```
 const qbin = ((q,e,s) => fetch("https://qbin.io", { method: "PUT", body: q, headers: {e,s} }).then(y => y.text()).then(z => console.info(z) || z));
 
@@ -39,29 +39,29 @@ qbin("Hello World"); // Just print to console
 qbin("Hello World").then(link => doSomething(link));
 ```
 
-# TCP API
+## TCP API
 You can connect to the qbin TCP server on port 90, send any text to it and after that do any of the following to receive the link:
 - send an EOT character
 - close the connection to the server (and kept half-open to receive the link)
 - wait for 5 seconds; this is for compatibility reasons and might get disabled in a later version
 
-## Using netcat (easy to remember)
+### Using netcat (easy to remember)
 ```
 $ echo "Hello World" | nc qbin.io 90
 $ echo "Hello World" | nc --half-close qbin.io 90  # Needed e.g. on FreeBSD
 ```
 
-## Using socat (works everywhere)
+### Using socat (works everywhere)
 ```
 $ echo "Hello World" | socat -t3 - tcp:qbin.io:90
 ```
 
-## Using telnet (non-recommended legacy way)
+### Using telnet (non-recommended legacy way)
 ```
 $ echo "Hello World" | telnet qbin.io 90
 ```
 
-# Supported Syntax Definitions
+## Supported Syntax Definitions
 qbin is using [Prism.js](http://prismjs.com) for syntax highlighting, which means that you can use all language names on [their list](http://prismjs.com/#languages-list).
 
 Additionally, we offer some other syntax definitions:
