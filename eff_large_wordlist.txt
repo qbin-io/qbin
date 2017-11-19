@@ -1,0 +1,2 @@
+# Use any word list to generate slugs from. For example, the EFF Diceware word list:
+# curl -s https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt | sed -r 's/^[0-9]+\t//g' >> eff_large_wordlist.txt
