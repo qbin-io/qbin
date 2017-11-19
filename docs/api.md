@@ -1,7 +1,7 @@
 # API Documentation
 The default maximum file size is **1 MB**.  
 The default expiration time is `20160`, corresponding to **14 days**.  
-The default syntax highlighting language is `general`, which highlights brackets, quotes, numbers and special characters in any text.
+The default syntax definition is `generic`, which highlights brackets, quotes, numbers and special characters in any text.
 
 # HTTP API
 You can use one of the following methods:
@@ -9,7 +9,7 @@ You can use one of the following methods:
   - `Q`: The actual text
   - `E`: The number of minutes until **[E]xpiration**, or `0` for no expiration.  
     You can also use one of the units `h d w` (for hours, days and weeks), e.g. `6h`.
-  - `S`: The **[S]yntax highlighting language** (see *Supported Syntax Languages* below)
+  - `S`: The **[S]yntax name** used for highlighting (see [Supported Syntax Definitions](#user-content-supported-syntax-definitions))
   - `R`: If set to `1`, **[R]edirect** to the document page instead of returning just the link to it
 - `POST /` with any other `Content-Type` to upload the whole request body.
 - `PUT /` with any `Content-Type` to upload the whole request body. This is easier to use with `curl`.
@@ -59,4 +59,20 @@ $ echo "Hello World" | socat -t3 - tcp:qbin.io:90
 ## Using telnet (non-recommended legacy way)
 ```
 $ echo "Hello World" | telnet qbin.io 90
+```
+
+# Supported Syntax Definitions
+qbin is using [Prism.js](http://prismjs.com) for syntax highlighting, which means that you can use all language names on [their list](http://prismjs.com/#languages-list).
+
+Additionally, we offer some other syntax definitions:
+- `none`: Don't highlight anything at all.
+- `generic`: As unintrusive as possible to make it look great on any text. Highlights brackets, quotes, numbers and special characters.
+- `markdown!` (Note the exclamation mark): Output rendered HTML from Markdown.
+
+As Prism.js is using some unintuitive names, you can also use some aliases with qbin:
+```
+apache -> apacheconf
+c++ -> cpp
+dockerfile -> docker
+html, xml, svg -> markup
 ```
