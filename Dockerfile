@@ -12,4 +12,4 @@ RUN apk add --no-cache go git musl-dev libstdc++ libc6-compat &&\
 
 WORKDIR "/data"
 EXPOSE 80 90
-CMD ["/data/qbin", "--http", ":80", "-tcp", ":90"]
+CMD ["/data/qbin", "--http", ":80", "--tcp", ":90"]
