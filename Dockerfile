@@ -3,6 +3,7 @@ FROM alpine
 ENV GOPATH=/data/go
 COPY backend /data/go/src/github.com/qbin-io/backend
 COPY frontend /data/frontend
+COPY eff_large_wordlist.txt /data/
 
 RUN apk add --no-cache go git musl-dev libstdc++ libc6-compat &&\
     go get github.com/qbin-io/backend/cmd/qbin &&\
