@@ -4,6 +4,7 @@ services:
         build: .
         networks: [main]
         restart: always
+        volumes: ["./certs:/data/certs"]
         ports:
         - "80:80"
         - "90:90"
