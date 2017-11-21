@@ -5,13 +5,12 @@ services:
         networks: [main]
         restart: always
         volumes: ["./certs:/data/certs"]
+        command: /data/qbin --root https://beta.qbin.io --force-root --http :80 --tcp :90 --https :443 --hsts
         ports:
         - "80:80"
         - "90:90"
         - "443:443"
         environment:
-        - "LISTEN_HTTPS=:443"
-        - "ROOT=https://beta.qbin.io/"
         - "DATABASE=root:qbin-K4Y76GQBB1DqTs6VH3aV@database/qbin"
     database:
         image: mariadb
