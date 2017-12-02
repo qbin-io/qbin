@@ -15,26 +15,13 @@ all-watch:
 back:
 	go get github.com/qbin-io/backend/cmd/qbin
 back-watch:
-	@trap 'kill -TERM $$loop >/dev/null 2>&1; wait $$loop; exit 0' INT TERM ;\
-	(   trap '[ -n "$$program" ] && { kill -TERM $$program >/dev/null 2>&1; wait $$program; }; exit 0' TERM ;\
-	    trap '{ [ -z "$$killing" ] && { killing=1; while [ -z "$$program" ]; do sleep 0.1; done; kill -TERM $$program >/dev/null 2>&1; wait $$program; killing=; }; } &' USR1 ;\
-		while true; do \
-			program= ;\
-			echo -------------------- ;\
-			go get github.com/qbin-io/backend/cmd/qbin && {\
-				./launch.sh & program=$$! ;\
-				wait $$program ;\
-			} || {\
-				sleep 31536000 & program=$$! ;\
-				wait ;\
-			};\
-			program= ;\
-			sleep 0.5 ;\
-		done ;\
-	) & loop=$$! ;\
+	@trap 'kill -TERM $$PID; exit 0' INT TERM ;\
+	sleep 1 ;\
 	while true; do \
-		inotifywait -qq --exclude '/\..+' -re modify . ;\
-		kill -USR1 $$loop >/dev/null 2>&1 ;\
+		./launch.sh & PID=$$! ;\
+		inotifywait -qq --exclude '/\..+' -e modify -e move -e create -e delete -e attrib -r . ;\
+		sleep 0.5 ;\
+		kill $$PID ;\
 	done
 
 front:

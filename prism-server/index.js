@@ -31,13 +31,13 @@ net.createServer({
                 }
             }
         } catch (err) {
-            console.error(err);
+            if (err.message != "write after end") console.error(err);
             try { connection.end(); } catch (e) {}
         }
     })
 
     connection.on("error", (err) => {
-        console.error(err);
+        if (err.message != "write after end") console.error(err);
         try { connection.end(); } catch (e) {}
     })
 
