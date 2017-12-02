@@ -24,7 +24,10 @@ back-watch:
 			go get github.com/qbin-io/backend/cmd/qbin && {\
 				./launch.sh & program=$$! ;\
 				wait $$program ;\
-			} ;\
+			} || {\
+				sleep 31536000 & program=$$! ;\
+				wait ;\
+			};\
 			program= ;\
 			sleep 0.5 ;\
 		done ;\
