@@ -10,27 +10,34 @@ help:
 
 all: back front
 all-watch:
-	{ make front-watch & }; make back-watch
+	@trap 'exit 0' INT; make -j 2 front-watch back-watch
 
 back:
 	go get github.com/qbin-io/backend/cmd/qbin
 back-watch:
-	@while [ true ]; do \
-	program= ;\
-	echo -------------------- ;\
-	go get github.com/qbin-io/backend/cmd/qbin && {\
-		{ qbin & } ;\
-		program=$$! ;\
-	} ;\
-	inotifywait -qq --exclude '/\..+' -re modify . ;\
-	[ -n $$program ] && kill $$program >/dev/null 2>&1 ;\
-	sleep 0.5 ;\
+	@trap 'kill -TERM $$loop >/dev/null 2>&1; wait $$loop; exit 0' INT TERM ;\
+	(   trap '[ -n "$$program" ] && { kill -TERM $$program >/dev/null 2>&1; wait $$program; }; exit 0' TERM ;\
+	    trap '{ [ -z "$$killing" ] && { killing=1; while [ -z "$$program" ]; do sleep 0.1; done; kill -TERM $$program >/dev/null 2>&1; wait $$program; killing=; }; } &' USR1 ;\
+		while true; do \
+			program= ;\
+			echo -------------------- ;\
+			go get github.com/qbin-io/backend/cmd/qbin && {\
+				./launch.sh & program=$$! ;\
+				wait $$program ;\
+			} ;\
+			program= ;\
+			sleep 0.5 ;\
+		done ;\
+	) & loop=$$! ;\
+	while true; do \
+		inotifywait -qq --exclude '/\..+' -re modify . ;\
+		kill -USR1 $$loop >/dev/null 2>&1 ;\
 	done
 
 front:
 	cd frontend/style && make
 front-watch:
-	cd frontend/style && make watch
+	+@trap 'exit 0' INT; cd frontend/style && make watch
 
 clean:
 	go clean
