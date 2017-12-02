@@ -34,4 +34,4 @@ front-watch:
 
 clean:
 	go clean
-	rm -r storage/*
+	rm -rf storage/*
