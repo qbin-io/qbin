@@ -18,7 +18,8 @@ back-watch:
 	@trap 'kill -TERM $$PID; exit 0' INT TERM ;\
 	sleep 1 ;\
 	while true; do \
-		./launch.sh & PID=$$! ;\
+		echo "Building backend..."
+		{ go get github.com/qbin-io/backend/cmd/qbin && ./launch.sh; } & PID=$$! ;\
 		inotifywait -qq --exclude '/\..+' -e modify -e move -e create -e delete -e attrib -r . ;\
 		sleep 0.5 ;\
 		kill $$PID ;\
