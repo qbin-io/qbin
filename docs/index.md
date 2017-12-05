@@ -49,6 +49,8 @@ $ docker-compose up -d
 ```
 $ git clone --recurse-submodules https://github.com/qbin-io/qbin qbin && cd qbin
 
+$ ln -s $PWD/backend $GOPATH/src/github.com/qbin-io/backend  # Link backend to GOPATH
+
 $ echo /eff_large_wordlist.txt >> .git/info/exclude  # Don't try to commit changes to the wordlist
 
 $ curl -s https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt | sed -r 's/^[0-9]+\t//g' >> eff_large_wordlist.txt  # Initialize wordlist
