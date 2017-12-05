@@ -1,7 +1,7 @@
 # qbin
 A minimalist pastebin service. Includes a nice and easy Netcat and POST API, and can render Markdown.
 
-### » [See it in action](https://qbin.io/)
+### » [See it in action](https://beta.qbin.io/)
 
 ## Documentation Index
 
@@ -25,13 +25,17 @@ A minimalist pastebin service. Includes a nice and easy Netcat and POST API, and
 
 ## Installation & Development
 
+You will need: a [MariaDB](https://mariadb.org/) database.
+
 ### Deploy using Go
 ```
-$ go get github.com/qbin-io/backend
+$ go get github.com/qbin-io/backend/cmd/qbin
 
-$ git clone https://github.com/qbin-io/frontend /usr/share/qbin
+$ git clone https://github.com/qbin-io/frontend
 
-$ qbin -p /usr/share/qbin
+$ curl -s https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt | sed -r 's/^[0-9]+\t//g' >> eff_large_wordlist.txt  # Initialize wordlist
+
+$ qbin -p ./frontend
 ```
 
 ### Deploy using Docker

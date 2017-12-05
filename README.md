@@ -8,4 +8,4 @@ Contains documentation and tooling for easier development and deployment.
 
 ---
 ### » [Documentation](http://qbin-io.viewdocs.io/qbin/) and more information
-### » [Public Version](https://qbin.io/) - see qbin in action
+### » [Public Version](https://beta.qbin.io/) - see qbin in action
