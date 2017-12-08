@@ -24,10 +24,9 @@ net.createServer({
             if (buffer.indexOf("\0") > -1) {
                 if (lang === "list") {
                     connection.end(Object.keys(Prism.languages).filter(x => x != "extend" && x != "insertBefore" && x != "DFS").join(","));
-                } else if (lang === "") {
-                    connection.end(code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
                 } else {
-                    connection.end(Prism.highlight(code, Prism.languages[lang]));
+                    code = Prism.highlight(code, Prism.languages[lang]);
+                    connection.end(code);
                 }
             }
         } catch (err) {
