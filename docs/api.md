@@ -7,7 +7,7 @@ The default syntax definition is `generic`, which highlights brackets, quotes, n
 You can use one of the following methods:
 - `POST /` with `application/x-www-form-urlencoded` or `multipart/form-data` using the following form parameters:
   - `Q`: The actual text
-  - `E`: The number of minutes until **[E]xpiration**, or `0` for no expiration.  
+  - `E`: The number of minutes until **[E]xpiration**, `0` for no expiration or `1` for a volatile document (can only be viewed once).  
     You can also use one of the units `h d w` (for hours, days and weeks), e.g. `6h`.
   - `S`: The **[S]yntax name** used for highlighting (see [Supported Syntax Definitions](#user-content-supported-syntax-definitions))
   - `R`: If set to `1`, **[R]edirect** to the document page instead of returning just the link to it
