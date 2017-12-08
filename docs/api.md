@@ -45,20 +45,14 @@ You can connect to the qbin TCP server on port 90, send any text to it and after
 - close the connection to the server (and kept half-open to receive the link)
 - wait for 5 seconds; this is for compatibility reasons and might get disabled in a later version
 
-### Using netcat (easy to remember)
+### Using netcat
 ```
 $ echo "Hello World" | nc qbin.io 90
-$ echo "Hello World" | nc --half-close qbin.io 90  # Needed e.g. on FreeBSD
 ```
 
-### Using socat (works everywhere)
+### Using socat
 ```
 $ echo "Hello World" | socat -t3 - tcp:qbin.io:90
-```
-
-### Using telnet (non-recommended legacy way)
-```
-$ echo "Hello World" | telnet qbin.io 90
 ```
 
 ## Supported Syntax Definitions

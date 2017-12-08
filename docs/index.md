@@ -8,7 +8,6 @@ A minimalist pastebin service. Includes a nice and easy Netcat and POST API, and
 - [API Documentation](api)
 - [Database Structure](database)
 - [Frontend Variables](frontend-variables)
-- [Planned Features](planned-features)
 
 ## Features
 - Simple UI that works with all browsers (including lynx)  
