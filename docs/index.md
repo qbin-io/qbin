@@ -62,7 +62,7 @@ make back-watch    build and run backend (Go), keep watching for file changes
 make front         build frontend (Stylus)
 make front-watch   build frontend (Stylus), keep watching for file changes
 make clean         run go clean and remove contents of 'storage'
-make all-watch -- [options...]  use all-watch with options
+make all && ./launch.sh [options...]  build and run with options
 ```
 Probably, `make all-watch` will be your best friend.
 
