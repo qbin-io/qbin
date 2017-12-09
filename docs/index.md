@@ -24,7 +24,7 @@ A minimalist pastebin service. Includes a nice and easy Netcat and POST API, and
 
 ## Installation & Development
 
-You will need: a [MariaDB](https://mariadb.org/) database.
+You will need: a [MariaDB](https://mariadb.org/) database, and [node.js](https://nodejs.org/) for syntax highlighting.
 
 ### Deploy using Go
 ```
@@ -34,7 +34,7 @@ $ git clone https://github.com/qbin-io/frontend
 
 $ curl -s https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt | sed -r 's/^[0-9]+\t//g' >> eff_large_wordlist.txt  # Initialize wordlist
 
-$ qbin -p ./frontend
+$ ./launch.sh -p ./frontend
 ```
 
 ### Deploy using Docker
@@ -62,6 +62,11 @@ make back-watch    build and run backend (Go), keep watching for file changes
 make front         build frontend (Stylus)
 make front-watch   build frontend (Stylus), keep watching for file changes
 make clean         run go clean and remove contents of 'storage'
-make back && qbin  manually execute qbin
+make all-watch -- [options...]  use all-watch with options
 ```
 Probably, `make all-watch` will be your best friend.
+
+### Starting qbin and prism-server seperately
+prism-server is a unix socket server used for syntax highlighting.
+You can start it with `node prism-server` from the repository.
+Go will install a binary for qbin, so you can run it using `qbin`, given that you added `$GOPATH/bin` to your `$PATH`.
