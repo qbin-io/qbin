@@ -40,6 +40,6 @@ net.createServer({
         try { connection.end(); } catch (e) {}
     })
 
-}).listen(process.argv[2] || "/tmp/prismjs.sock", () => {
+}).listen(process.argv[2] || "/tmp/prism-server.sock", () => {
     console.log("prism-server started at: " + (process.argv[2] || "/tmp/prismjs.sock"))
 });

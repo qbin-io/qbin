@@ -13,7 +13,7 @@ stop() {
 trap "stop; exit" TERM INT
 
 # Start prism-server
-rm -f /tmp/prismjs.sock
+rm -f /tmp/prism-server.sock
 node prism-server &
 prism_pid=$!
 

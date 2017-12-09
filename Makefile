@@ -19,7 +19,7 @@ back-watch:
 	sleep 1 ;\
 	while true; do \
 		echo "Building backend..." ;\
-		{ go get github.com/qbin-io/backend/cmd/qbin && ./launch.sh; } & PID=$$! ;\
+		{ go get github.com/qbin-io/backend/cmd/qbin && ./launch.sh --debug; } & PID=$$! ;\
 		inotifywait -qq --exclude '/\..+' -e modify -e move -e create -e delete -e attrib -r . ;\
 		sleep 0.5 ;\
 		kill $$PID ;\
