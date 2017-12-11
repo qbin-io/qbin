@@ -41,5 +41,5 @@ net.createServer({
     })
 
 }).listen(process.argv[2] || "/tmp/prism-server.sock", () => {
-    console.log("prism-server started at: " + (process.argv[2] || "/tmp/prismjs.sock"))
+    console.log("prism-server started at: " + (process.argv[2] || "/tmp/prism-server.sock"))
 });
