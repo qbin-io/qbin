@@ -1,0 +1,11 @@
+# Block links to the domain example.com (case insensitive)
+# [D] ^example\.org$
+
+# Block all HTTPS links (case insensitive)
+# [U] ^https://
+
+# Block the word "something" (case sensitive)
+# \bsomething\b
+
+# Block the word "something" (case insensitive)
+# (?i)\bsomething\b
