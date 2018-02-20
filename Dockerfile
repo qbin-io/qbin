@@ -11,6 +11,7 @@ RUN GOPATH=/data/go go get github.com/qbin-io/backend/cmd/qbin &&\
 COPY frontend /data/frontend
 COPY prism-server /data/prism-server
 COPY eff_large_wordlist.txt /data/eff_large_wordlist.txt
+COPY blacklist.regex /data/blacklist.regex
 COPY launch.sh /data/launch
 
 WORKDIR "/data"
