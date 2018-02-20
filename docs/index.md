@@ -41,6 +41,8 @@ $ ./launch.sh -p ./frontend
 ```
 $ git clone --recurse-submodules https://github.com/qbin-io/qbin qbin && cd qbin
 
+$ curl -s https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt | sed -r 's/^[0-9]+\t//g' >> eff_large_wordlist.txt  # Initialize wordlist
+
 $ docker-compose up -d
 ```
 
