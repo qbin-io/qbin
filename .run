@@ -15,6 +15,7 @@ run:
   watchIgnore: |
     /frontend/*.css
     /frontend/*.css.map
+    .git/
   command:
   - run build
   - run launch
