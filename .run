@@ -1,0 +1,23 @@
+build:
+- go get github.com/qbin-io/backend/cmd/qbin
+- cd frontend/style && stylus -m -o .. style.styl style-input.styl style-markdown.styl
+
+launch:
+  simultaneous: true
+  command:
+  - rm -f /tmp/prism-server.sock && node prism-server
+  - qbin "$@"
+
+run:
+  watch: |
+    /backend/
+    /frontend/
+  watchIgnore: |
+    /frontend/*.css
+    /frontend/*.css.map
+  command:
+  - run build
+  - run launch
+
+env:
+  DATABASE: root:@tcp(localhost)/qbin
